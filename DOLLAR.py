@@ -1,7 +1,5 @@
 import requests
-import time
 from bs4 import BeautifulSoup
-from datetime import datetime
 
 
 class Dollar:
@@ -22,11 +20,11 @@ class Dollar:
 
     def check_currency(self):
         if self.current_dollor > self.dollor_value:
-            return "Курс долора к рублю: {}. \n Рубль опять падает.".format(self.current_dollor)
+            return "Курс доллара к рублю: {}. \n Рубль опять падает.".format(self.current_dollor)
         elif self.current_dollor > self.dollor_value:
-            return "Курс долора к рублю: {}. \n Рубль растет.".format(self.current_dollor)
+            return "Курс доллара к рублю: {}. \n Рубль растет.".format(self.current_dollor)
         else:
-            return "Курс долора к рублю: {}. \n Ничего не изменилось.".format(self.current_dollor)
+            return "Курс доллара к рублю: {}. \n Ничего не изменилось.".format(self.current_dollor)
 
 
 

@@ -5,12 +5,14 @@ import datetime
 
 from DOLLAR import Dollar
 from Hryvnia import Hryvnia
+from Euro import Euro
 
 from telebot import types
 
 bot = telebot.TeleBot(config.TOKEN)
 dollar_currency = Dollar()
 hryvnia_currency = Hryvnia()
+euro_currency = Euro()
 
 
 @bot.message_handler(commands=["help"])
@@ -46,9 +48,11 @@ def currency(message):
     markup_2 = types.ReplyKeyboardMarkup(resize_keyboard=True)
     item_1 = types.KeyboardButton("Dollars")
     item_2 = types.KeyboardButton("Hryvnia")
+    item_3 = types.KeyboardButton("Euro")
 
-    markup_2.add(item_1, item_2)
+    markup_2.add(item_1, item_2, item_3)
     bot.send_message(message.chat.id, "Выбери любую валюту..", parse_mode='html', reply_markup=markup_2)
+
 
 @bot.message_handler(commands=['time'])
 def time(message):
@@ -82,6 +86,9 @@ def lalala(message):
         elif message.text == "Hryvnia":
             bot.send_message(message.chat.id,
                              "Сейчас курс Гривны к Рублю: {}".format(hryvnia_currency.get_currency_price()))
+        elif message.text == "Euro":
+            bot.send_message(message.chat.id,
+                             "Сейчас курс Евро к Рублю: {}".format(euro_currency.get_currency_price()))
         else:
             bot.send_message(message.chat.id, 'Я не знаю что ответить 😢')
 
